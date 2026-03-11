@@ -455,12 +455,25 @@
     let charIndex = 0;
     function typeGreeting() { if (charIndex < greetingText.length) { greetingElement.textContent += greetingText.charAt(charIndex); charIndex++; setTimeout(typeGreeting, 100); } }
 
-    // গ্লোবাল ক্লিক হ্যান্ডলার - শুধু অডিও পারমিশন নেবে
+    // গ্লোবাল ক্লিক হ্যান্ডলার - অডিও পারমিশন ও birthday audio বাজানোর চেষ্টা
     function handleGlobalClick() {
         if (!audioAllowed) {
             audioAllowed = true;
             document.getElementById('playBtn').classList.add('hide');
             console.log('✅ Audio permission granted by user interaction');
+        }
+        
+        // জন্মদিনের দিনে এবং অডিও না বাজলে বাজানোর চেষ্টা করো
+        const now = new Date();
+        const isBirthdayToday = (now.getMonth() === CONFIG.month && now.getDate() === CONFIG.day);
+        
+        if (isBirthdayToday && !birthdayAudioPlayed) {
+            birthdayAudio.play()
+                .then(() => { 
+                    birthdayAudioPlayed = true; 
+                    console.log("🎵 Birthday audio played by screen click");
+                })
+                .catch(e => console.log(e));
         }
     }
     document.body.addEventListener('click', handleGlobalClick);
