@@ -212,7 +212,7 @@
     </div>
 
     <div class="countdown-screen" id="countdownScreen">
-        <h1 class="countdown-title">Wait for countdown Please...</h1>
+        <h1 class="countdown-title">Wait for countdown Please...⌛</h1>
         <div class="countdown-box">
             <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Days</span></div>
             <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Hours</span></div>
@@ -563,7 +563,7 @@
         const timeSuffix = getTimeSuffix(CONFIG.hour);
         const displayHour = formatHour(CONFIG.hour);
         const minuteStr = CONFIG.minute.toString().padStart(2, '0');
-        document.getElementById('countdownMessage').innerHTML = `Time-lap at ${CONFIG.day} ${getMonthName(CONFIG.month)} ${displayHour}:${minuteStr} ${timeSuffix}!`;
+        document.getElementById('countdownMessage').innerHTML = `⏰ Time-lap at ${CONFIG.day} ${getMonthName(CONFIG.month)} ${displayHour}:${minuteStr} ${timeSuffix}!`;
         
         if (isBirthdayToday) {
             // জন্মদিনের দিন: কাউন্টডাউন শেষ, গ্রিটিং স্ক্রিন দেখাও
